@@ -1,3 +1,8 @@
 Name	Delia Ullrich
 Username	delia.ullrich@ethereal.email
 Password	AWzf2RzTAWC6BZagyg
+
+install redis first from
+https://github.com/microsoftarchive/redis/releases
+and give path in environment variable 
+then on redis server in using cmd with the command redis-server
