@@ -1,0 +1,95 @@
+### User sing up endpoint
+POST http://localhost:3001/v1/user
+Content-Type: application/json
+
+{
+     "name": "mit",
+        "company": "TCS",
+        "address": "Anand",
+        "phone": 9994242803,
+        "email": "mit@gmail.com",
+        "password": "mit123456"
+}
+### User sing in endpoint
+POST http://localhost:3001/v1/user/login
+Content-Type: application/json 
+
+{
+       "email": "mit@gmail.com",
+        "password": "password"
+}
+
+### Get a user profile endpoint
+GET  http://localhost:3001/v1/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pdEBnbWFpbC5jb20iLCJpYXQiOjE3MDkwOTgzODcsImV4cCI6MTcwOTE4NDc4N30.w11UP5qY_E8UBsEX3YOBqZ1nvG2iJnxDtfaGFrHby9I
+
+
+###Token routers
+
+### Get refreshed token
+GET http://localhost:3001/v1/tokens
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pdEBnbWFpbC5jb20iLCJpYXQiOjE3MDkwOTgzODcsImV4cCI6MTcxMTY5MDM4N30.DA7lZUTFqUmdmYa6S9wMB5jIcORsm2cMm8J6RL0yk50
+
+#### Password reset request endpoints
+POST http://localhost:3001/v1/user/reset-password
+Content-Type: application/json 
+
+{
+    "email": "mit@gmail.com"
+}
+#### Update new password endpoint
+PATCH  http://localhost:3001/v1/user/reset-password
+Content-Type: application/json 
+
+{
+    "email": "mit@gmail.com",
+    "pin": "865389",
+    "newPassword": "password"
+}
+
+#### user logout endpoint
+DELETE http://localhost:3001/v1/user/logout
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pdEBnbWFpbC5jb20iLCJpYXQiOjE3MDkwOTgzODcsImV4cCI6MTcwOTE4NDc4N30.w11UP5qY_E8UBsEX3YOBqZ1nvG2iJnxDtfaGFrHby9I
+ 
+ 
+###Ticket apis
+
+ 
+### Open new ticket
+POST http://localhost:3001/v1/ticket
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pdEBnbWFpbC5jb20iLCJpYXQiOjE3MDkwOTg3MDEsImV4cCI6MTcxMTY5MDcwMX0.EU8m2OFHQEzN9A0mUtRW8srrSe0Hxpgf7Us9b7fNt-w
+
+Content-Type: application/json 
+
+{
+  "subject": "Form Issue",
+  "sender": "MIT",
+  "message": "1 Contact form not working. please fix it as soon as possible" 
+}
+
+###Get all the tickets
+GET http://localhost:3001/v1/ticket
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pdEBnbWFpbC5jb20iLCJpYXQiOjE3MDkwOTg3MDEsImV4cCI6MTcwOTE4NTEwMX0.XsJHfXq8sZ_UcX19cJDaeLeua8t48VZwE2FDGZoGUBA
+
+### Get single ticket
+GET http://localhost:3001/v1/ticket/65dec6e5ce41e04aa4680f9a
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1pdEBnbWFpbC5jb20iLCJpYXQiOjE3MDkwOTg3MDEsImV4cCI6MTcwOTE4NTEwMX0.XsJHfXq8sZ_UcX19cJDaeLeua8t48VZwE2FDGZoGUBA
+
+### Reply message to the ticket
+PUT http://localhost:3001/v1/ticket/5fcd969896b6cb084ceafd19
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5ODkxOTg0LCJleHAiOjE2MDk5NzgzODR9.7cUfpK_RF68a-xfxVXuet4PWVqwToUPyDXpupFlCQNI
+Content-Type: application/json 
+
+{ 
+    "message": "this is the 222 reply", 
+    "sender": "Prem" 
+}
+
+### Close the ticket
+PATCH http://localhost:3001/v1/ticket/close-ticket/5fcd969896b6cb084ceafd19
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5OTA0NjQyLCJleHAiOjE2MDk5OTEwNDJ9.hRSVE-AFfMnsnxgCouqV_W2U5A2nfVLOBClPE59GGls
+
+### Delete the ticket
+DELETE  http://localhost:3001/v1/ticket/5fcd969896b6cb084ceafd19
+Authorization:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImUyQGUuY29tIiwiaWF0IjoxNjA5ODkxOTg0LCJleHAiOjE2MDk5NzgzODR9.7cUfpK_RF68a-xfxVXuet4PWVqwToUPyDXpupFlCQNI
+
